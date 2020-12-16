@@ -20,9 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="505c62ef-dec9-4ffb-bd99-84b9f770ed8d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/functions/function_filte.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/functions/function_flatmap.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/function_core.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_core.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/function_filte.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_filte.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/function_flatmap.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_flat_map.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/function_map.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_map.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stream.go" beforeDir="false" afterPath="$PROJECT_DIR$/stream.go" afterDir="false" />
     </list>
@@ -31,7 +33,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="GOROOT" path="C:\Go" />
+  <component name="GOROOT" path="$USER_HOME$/apps/Go/go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -57,6 +59,16 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="woohoo" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$" />
+      <package value="woohoo" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
     <configuration name="go build woohoo" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="woohoo" />
       <working_directory value="$PROJECT_DIR$" />
@@ -64,6 +76,17 @@
       <filePath value="$PROJECT_DIR$/main.go" />
       <package value="woohoo" />
       <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="woohoo" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <framework value="gotest" />
+      <kind value="DIRECTORY" />
+      <package value="woohoo" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
     <recent_temporary>
@@ -86,60 +109,78 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1877" height="225" key="GridCell.Tab.0.bottom" timestamp="1608122271294">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="667" y="427" key="#GOROOT" timestamp="1608132788411">
+      <screen x="0" y="0" width="1920" height="1020" />
     </state>
+    <state x="667" y="427" key="#GOROOT/0.0.1920.1020@0.0.1920.1020" timestamp="1608132788411" />
+    <state width="1838" height="365" key="GridCell.Tab.0.bottom" timestamp="1608136206094">
+      <screen x="0" y="0" width="1920" height="1020" />
+    </state>
+    <state width="1838" height="365" key="GridCell.Tab.0.bottom/0.0.1920.1020@0.0.1920.1020" timestamp="1608136206094" />
     <state width="1877" height="225" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1608122271294" />
-    <state width="1877" height="225" key="GridCell.Tab.0.center" timestamp="1608122271294">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1838" height="365" key="GridCell.Tab.0.center" timestamp="1608136206093">
+      <screen x="0" y="0" width="1920" height="1020" />
     </state>
+    <state width="1838" height="365" key="GridCell.Tab.0.center/0.0.1920.1020@0.0.1920.1020" timestamp="1608136206093" />
     <state width="1877" height="225" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1608122271294" />
-    <state width="1877" height="225" key="GridCell.Tab.0.left" timestamp="1608122271293">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1838" height="365" key="GridCell.Tab.0.left" timestamp="1608136206092">
+      <screen x="0" y="0" width="1920" height="1020" />
     </state>
+    <state width="1838" height="365" key="GridCell.Tab.0.left/0.0.1920.1020@0.0.1920.1020" timestamp="1608136206092" />
     <state width="1877" height="225" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1608122271293" />
-    <state width="1877" height="225" key="GridCell.Tab.0.right" timestamp="1608122271294">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1838" height="365" key="GridCell.Tab.0.right" timestamp="1608136206094">
+      <screen x="0" y="0" width="1920" height="1020" />
     </state>
+    <state width="1838" height="365" key="GridCell.Tab.0.right/0.0.1920.1020@0.0.1920.1020" timestamp="1608136206093" />
     <state width="1877" height="225" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1608122271294" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1608109285823">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1838" height="365" key="GridCell.Tab.1.bottom" timestamp="1608136206098">
+      <screen x="0" y="0" width="1920" height="1020" />
     </state>
+    <state width="1838" height="365" key="GridCell.Tab.1.bottom/0.0.1920.1020@0.0.1920.1020" timestamp="1608136206098" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1608109285823" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1608109285823">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1838" height="365" key="GridCell.Tab.1.center" timestamp="1608136206096">
+      <screen x="0" y="0" width="1920" height="1020" />
     </state>
+    <state width="1838" height="365" key="GridCell.Tab.1.center/0.0.1920.1020@0.0.1920.1020" timestamp="1608136206096" />
     <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1608109285823" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1608109285823">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1838" height="365" key="GridCell.Tab.1.left" timestamp="1608136206095">
+      <screen x="0" y="0" width="1920" height="1020" />
     </state>
+    <state width="1838" height="365" key="GridCell.Tab.1.left/0.0.1920.1020@0.0.1920.1020" timestamp="1608136206095" />
     <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1608109285823" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1608109285823">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1838" height="365" key="GridCell.Tab.1.right" timestamp="1608136206097">
+      <screen x="0" y="0" width="1920" height="1020" />
     </state>
+    <state width="1838" height="365" key="GridCell.Tab.1.right/0.0.1920.1020@0.0.1920.1020" timestamp="1608136206097" />
     <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1608109285823" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1608122119921">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="623" y="221" width="874" height="665" key="search.everywhere.popup" timestamp="1608133510621">
+      <screen x="0" y="0" width="1920" height="1020" />
     </state>
+    <state x="623" y="221" width="874" height="665" key="search.everywhere.popup/0.0.1920.1020@0.0.1920.1020" timestamp="1608133510621" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1608122119921" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/stream.go</url>
-          <line>165</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/functions/function_filte.go</url>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/functions/function_filte.go</url>
+          <line>15</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/stream.go</url>
-          <line>126</line>
-          <option name="timeStamp" value="3" />
+          <line>95</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

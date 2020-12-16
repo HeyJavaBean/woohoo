@@ -24,9 +24,6 @@ type Stream struct {
 
 }
 
-
-
-
 func GetStream(ar []interface{}, paraNum int) *Stream {
 
 	if paraNum < 1 {
@@ -56,47 +53,26 @@ func GetStream(ar []interface{}, paraNum int) *Stream {
 	return &stream
 }
 
-
 func (stream *Stream) Map(mapFunc functions.MapFunc) *Stream{
-
-	mapF := new(functions.Function)
-	mapF.FuncType = "map"
-	mapF.Stateless = true
-	mapF.Funcs = functions.Detail{}
-	mapF.Funcs.MapFunc = mapFunc
-	stream.funcTail.NextFunc = mapF
-	stream.funcTail = mapF
+	f:=functions.AddValve(functions.NewMap(mapFunc))
+	stream.funcTail.NextFunc = f
+	stream.funcTail = f
 	return stream
-
 }
 
 func (stream *Stream) Filter(filterFunc functions.FilterFunc) *Stream{
-
-	filterF := new(functions.Function)
-	filterF.FuncType = "filter"
-	filterF.Stateless = true
-	filterF.Funcs = functions.Detail{}
-	filterF.Funcs.FilterFunc = filterFunc
-	stream.funcTail.NextFunc = filterF
-	stream.funcTail = filterF
+	f:=functions.AddValve(functions.NewFilter(filterFunc))
+	stream.funcTail.NextFunc = f
+	stream.funcTail = f
 	return stream
-
 }
-
 
 func (stream *Stream) FlatMap(fmF functions.FlatMapFunc) *Stream{
-
-	flatF := new(functions.Function)
-	flatF.FuncType = "flatMap"
-	flatF.Stateless = true
-	flatF.Funcs = functions.Detail{}
-	flatF.Funcs.FlatMapFunc = fmF
-	stream.funcTail.NextFunc = flatF
-	stream.funcTail = flatF
+	f:=functions.AddValve(functions.NewFlatMap(fmF))
+	stream.funcTail.NextFunc = f
+	stream.funcTail = f
 	return stream
-
 }
-
 
 //把所有内容执行启动并且输出到输出管道里
 func (stream *Stream) doFireUp(){
@@ -110,9 +86,6 @@ func (stream *Stream) doFireUp(){
 	for i:=0;i<stream.paraNum;i++{
 		go stream.fireUp()
 	}
-
-
-
 }
 
 func (stream *Stream) fireUp(){
@@ -120,35 +93,20 @@ func (stream *Stream) fireUp(){
 	stream.startFlag.Wait()
 
 	for {
-		//从input里取数据
 		if data, ok := <-stream.input; ok {
 			//执行函数链操作
-
-			firstFunc := stream.funcChain.NextFunc
-			for firstFunc!=nil{
-				output := firstFunc.Fire(data)
-				if firstFunc.FuncType=="flatmap" && output!=nil{
-					//数组的多个处理
-					ars := output.([]interface{})
-					for _,a := range ars {
-						stream.output<-a
-					}
-					continue
-				}
-
-				if data!=nil{
-					firstFunc = firstFunc.NextFunc
-					data = output
+			function := stream.funcChain.NextFunc
+			for function !=nil{
+				out := function.Func.Fire(data)
+				if out!=nil&&len(out)>0{
+					function = function.NextFunc
+					data = out[0]
 				}else{
 					break
 				}
 			}
-
-			if data!=nil{
-				//把执行后的结果放入到输出管道里
-				stream.output<-data
-			}
 		} else {
+			stream.output<-data
 			stream.wg.Done()
 			break
 		}

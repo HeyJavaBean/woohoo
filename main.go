@@ -19,21 +19,23 @@ func main() {
 		intt=intt + 0
 		return intt
 	}
+
+	var filterF = func(in interface{}) bool{
+		intt := in.(int)
+		fmt.Println("this is:",intt,"and ",intt%2==0)
+		return intt%2==0
+	}
 	//
-	//var filterF = func(in interface{}) bool{
+	//var flatF = func(in interface{}) []interface{}{
 	//	intt := in.(int)
-	//	return intt%2==0
+	//	return []interface{}{intt+2,intt-3}
 	//}
 
-	var flatF = func(in interface{}) []interface{}{
-		intt := in.(int)
-		return []interface{}{intt,intt,intt}
-	}
-
 	//start:= time.Now()
-	output := GetStream(arr, len(arr)).Map(mappw).FlatMap(flatF).Execute()
+	output := GetStream(arr, 1).Map(mappw).Filter(filterF).Execute()
 	//end := time.Now()
 
+	fmt.Println("done!")
 	for _, o := range output {
 		it := o.(int)
 		fmt.Println(it)
