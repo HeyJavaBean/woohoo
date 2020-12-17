@@ -1,8 +1,6 @@
 package functions
 
-import (
-	"fmt"
-)
+import "sync"
 
 type Function struct {
 	Input *chan interface{}
@@ -15,17 +13,22 @@ type Function struct {
 }
 
 type ValveFunc interface {
-	Fire(in interface{}, output *chan interface{})
+	Fire(in interface{}, output *chan interface{},wg *sync.WaitGroup)
 }
 
 func (function *Function) FireValve() {
-	fmt.Println("fire!")
+	//开一个携程触发了就不管了
 	go func() {
+		wg := sync.WaitGroup{}
 		for {
 			if data, ok := <-*(function.Input); ok {
-				function.Func.Fire(data, function.Output)
+				//并发方式：来几个数据开几个线程处理
+				wg.Add(1)
+				//执行完了里面自己done
+				go function.Func.Fire(data, function.Output,&wg)
 			} else {
-				//关闭输出管道?
+				//等所有协程执行完了再关闭，这里只有一个人操作关闭所以没事
+				wg.Wait()
 				close(*function.Output)
 				break
 			}

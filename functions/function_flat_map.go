@@ -1,5 +1,6 @@
 package functions
 
+import "sync"
 
 type FlatMapFunc func(interface{}) []interface{}
 
@@ -9,7 +10,7 @@ type ValveFlatMap struct{
 	FlatMapFunc FlatMapFunc
 }
 
-func (valve *ValveFlatMap) Fire(in interface{},output *chan interface{}){
+func (valve *ValveFlatMap) Fire(in interface{},output *chan interface{},wg *sync.WaitGroup){
 
 	arr := valve.FlatMapFunc(in)
 	if arr!=nil{
@@ -17,7 +18,7 @@ func (valve *ValveFlatMap) Fire(in interface{},output *chan interface{}){
 			*output<-a
 		}
 	}
-
+	wg.Done()
 }
 
 func NewFlatMap(fmap FlatMapFunc) *ValveFlatMap{
