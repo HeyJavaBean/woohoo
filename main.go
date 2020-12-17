@@ -16,7 +16,8 @@ func main() {
 
 	var mappw = func(in interface{}) interface{}{
 		intt := in.(int)
-		intt=intt + 0
+		intt=intt + 3
+		fmt.Println("done!")
 		return intt
 	}
 

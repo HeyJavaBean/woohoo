@@ -9,13 +9,12 @@ type ValveFilter struct{
 	FilterFunc FilterFunc
 }
 
-func (valve *ValveFilter) Fire(in interface{}) []interface{}{
+func (valve *ValveFilter) Fire(in interface{},output *chan interface{}){
 
 	out := valve.FilterFunc(in)
 	if out{
-		return []interface{}{in}
+		*output<-in
 	}
-	return nil
 
 }
 

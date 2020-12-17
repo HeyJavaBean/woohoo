@@ -9,9 +9,14 @@ type ValveFlatMap struct{
 	FlatMapFunc FlatMapFunc
 }
 
-func (valve *ValveFlatMap) Fire(in interface{}) []interface{}{
+func (valve *ValveFlatMap) Fire(in interface{},output *chan interface{}){
 
-	return valve.FlatMapFunc(in)
+	arr := valve.FlatMapFunc(in)
+	if arr!=nil{
+		for _,a := range arr {
+			*output<-a
+		}
+	}
 
 }
 

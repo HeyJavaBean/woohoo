@@ -7,8 +7,11 @@ type ValveMap struct{
 	MapFunc MapFunc
 }
 
-func (valve *ValveMap) Fire(in interface{}) []interface{}{
-	return []interface{}{valve.MapFunc(in)}
+func (valve *ValveMap) Fire(in interface{},output *chan interface{}){
+	out := valve.MapFunc(in)
+	if out!=nil{
+		*output<-out
+	}
 }
 
 func NewMap(mapFunc MapFunc) *ValveMap{

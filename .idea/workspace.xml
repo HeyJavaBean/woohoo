@@ -20,10 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="505c62ef-dec9-4ffb-bd99-84b9f770ed8d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/functions/function_passthrough.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/function_core.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_core.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/function_filte.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_filte.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/function_flatmap.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_flat_map.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/function_filte.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_filter.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/function_flat_map.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_flat_map.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/function_map.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_map.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stream.go" beforeDir="false" afterPath="$PROJECT_DIR$/stream.go" afterDir="false" />
@@ -33,7 +34,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="GOROOT" path="$USER_HOME$/apps/Go/go" />
+  <component name="GOROOT" path="C:\Go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -55,6 +56,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\yunnli\Desktop\WSL\woohoo\functions" />
       <recent name="C:\Users\yunnli\Desktop\woohoo\functions" />
     </key>
   </component>
@@ -115,50 +117,55 @@
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state x="667" y="427" key="#GOROOT" timestamp="1608132788411">
-      <screen x="0" y="0" width="1920" height="1020" />
+    <state x="667" y="435" key="#GOROOT" timestamp="1608189310275">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="667" y="427" key="#GOROOT/0.0.1920.1020@0.0.1920.1020" timestamp="1608132788411" />
-    <state width="1838" height="365" key="GridCell.Tab.0.bottom" timestamp="1608136206094">
-      <screen x="0" y="0" width="1920" height="1020" />
+    <state x="667" y="435" key="#GOROOT/0.0.1920.1040@0.0.1920.1040" timestamp="1608189310275" />
+    <state x="715" y="224" key="#xdebugger.evaluate" timestamp="1608209761465">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="715" y="224" key="#xdebugger.evaluate/0.0.1920.1040@0.0.1920.1040" timestamp="1608209761465" />
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1608211580698">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1838" height="365" key="GridCell.Tab.0.bottom/0.0.1920.1020@0.0.1920.1020" timestamp="1608136206094" />
-    <state width="1877" height="225" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1608122271294" />
-    <state width="1838" height="365" key="GridCell.Tab.0.center" timestamp="1608136206093">
-      <screen x="0" y="0" width="1920" height="1020" />
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1608211580698" />
+    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1608211580697">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1838" height="365" key="GridCell.Tab.0.center/0.0.1920.1020@0.0.1920.1020" timestamp="1608136206093" />
-    <state width="1877" height="225" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1608122271294" />
-    <state width="1838" height="365" key="GridCell.Tab.0.left" timestamp="1608136206092">
-      <screen x="0" y="0" width="1920" height="1020" />
+    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1608211580697" />
+    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1608211580697">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1838" height="365" key="GridCell.Tab.0.left/0.0.1920.1020@0.0.1920.1020" timestamp="1608136206092" />
-    <state width="1877" height="225" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1608122271293" />
-    <state width="1838" height="365" key="GridCell.Tab.0.right" timestamp="1608136206094">
-      <screen x="0" y="0" width="1920" height="1020" />
+    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1608211580697" />
+    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1608211580698">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1838" height="365" key="GridCell.Tab.0.right/0.0.1920.1020@0.0.1920.1020" timestamp="1608136206093" />
-    <state width="1877" height="225" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1608122271294" />
-    <state width="1838" height="365" key="GridCell.Tab.1.bottom" timestamp="1608136206098">
-      <screen x="0" y="0" width="1920" height="1020" />
+    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1608211580698" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1608211581617">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1838" height="365" key="GridCell.Tab.1.bottom/0.0.1920.1020@0.0.1920.1020" timestamp="1608136206098" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1608109285823" />
-    <state width="1838" height="365" key="GridCell.Tab.1.center" timestamp="1608136206096">
-      <screen x="0" y="0" width="1920" height="1020" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1608211581617" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1608211581617">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1838" height="365" key="GridCell.Tab.1.center/0.0.1920.1020@0.0.1920.1020" timestamp="1608136206096" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1608109285823" />
-    <state width="1838" height="365" key="GridCell.Tab.1.left" timestamp="1608136206095">
-      <screen x="0" y="0" width="1920" height="1020" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1608211581617" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1608211581617">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1838" height="365" key="GridCell.Tab.1.left/0.0.1920.1020@0.0.1920.1020" timestamp="1608136206095" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1608109285823" />
-    <state width="1838" height="365" key="GridCell.Tab.1.right" timestamp="1608136206097">
-      <screen x="0" y="0" width="1920" height="1020" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1608211581617" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1608211581617">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1838" height="365" key="GridCell.Tab.1.right/0.0.1920.1020@0.0.1920.1020" timestamp="1608136206097" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1608109285823" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1608211581617" />
     <state x="623" y="221" width="874" height="665" key="search.everywhere.popup" timestamp="1608133510621">
       <screen x="0" y="0" width="1920" height="1020" />
     </state>
@@ -169,18 +176,28 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/functions/function_filte.go</url>
+          <url>file://$PROJECT_DIR$/functions/function_filter.go</url>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/functions/function_filte.go</url>
+          <url>file://$PROJECT_DIR$/functions/function_filter.go</url>
           <line>15</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/stream.go</url>
-          <line>95</line>
-          <option name="timeStamp" value="10" />
+          <line>80</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/functions/function_core.go</url>
+          <line>24</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/stream.go</url>
+          <line>43</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
