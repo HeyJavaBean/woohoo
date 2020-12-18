@@ -163,6 +163,5 @@ func (stream *Stream) Count() int{
 			break
 		}
 	}
-
 	return c
 }

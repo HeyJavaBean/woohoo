@@ -20,20 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="505c62ef-dec9-4ffb-bd99-84b9f770ed8d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/functions/function_distinct.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/functions/function_safe_peek.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/functions/function_skip.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/functions/function_sort.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/function_core.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_core.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/function_filter.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_filter.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/function_flat_map.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_flat_map.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/function_limit.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_limit.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/function_map.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_map.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/function_passthrough.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_passthrough.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/function_peek.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_peek.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stream.go" beforeDir="false" afterPath="$PROJECT_DIR$/stream.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/function_sort.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_sort.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,26 +143,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1608276589403" />
-    <state width="1877" height="259" key="GridCell.Tab.0.bottom" timestamp="1608281350398">
+    <state width="1877" height="259" key="GridCell.Tab.0.bottom" timestamp="1608287676409">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1838" height="228" key="GridCell.Tab.0.bottom/0.0.1920.1020@0.0.1920.1020" timestamp="1608219455359" />
-    <state width="1877" height="259" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1608281350398" />
-    <state width="1877" height="259" key="GridCell.Tab.0.center" timestamp="1608281350398">
+    <state width="1877" height="259" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1608287676409" />
+    <state width="1877" height="259" key="GridCell.Tab.0.center" timestamp="1608287676399">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1838" height="228" key="GridCell.Tab.0.center/0.0.1920.1020@0.0.1920.1020" timestamp="1608219455357" />
-    <state width="1877" height="259" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1608281350398" />
-    <state width="1877" height="259" key="GridCell.Tab.0.left" timestamp="1608281350398">
+    <state width="1877" height="259" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1608287676399" />
+    <state width="1877" height="259" key="GridCell.Tab.0.left" timestamp="1608287676399">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1838" height="228" key="GridCell.Tab.0.left/0.0.1920.1020@0.0.1920.1020" timestamp="1608219455356" />
-    <state width="1877" height="259" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1608281350398" />
-    <state width="1877" height="259" key="GridCell.Tab.0.right" timestamp="1608281350398">
+    <state width="1877" height="259" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1608287676399" />
+    <state width="1877" height="259" key="GridCell.Tab.0.right" timestamp="1608287676399">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1838" height="228" key="GridCell.Tab.0.right/0.0.1920.1020@0.0.1920.1020" timestamp="1608219455358" />
-    <state width="1877" height="259" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1608281350398" />
+    <state width="1877" height="259" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1608287676399" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1608211581617">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
