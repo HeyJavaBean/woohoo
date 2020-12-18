@@ -24,8 +24,8 @@ func (function *Function) FireValve() {
 			if data, ok := <-*(function.Input); ok {
 				//并发方式：来几个数据开几个线程处理
 				wg.Add(1)
-				//执行完了里面自己done
-				go function.Func.Fire(data, function.Output,&wg)
+				//执行完了里面自己done，至于这里面是不是多线程的看具体实现
+				function.Func.Fire(data, function.Output,&wg)
 			} else {
 				//等所有协程执行完了再关闭，这里只有一个人操作关闭所以没事
 				wg.Wait()

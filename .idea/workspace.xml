@@ -20,15 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="505c62ef-dec9-4ffb-bd99-84b9f770ed8d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/functions/function_limit.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/functions/function_peek.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functions/function_distinct.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functions/function_safe_peek.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functions/function_skip.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functions/function_sort.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/function_core.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_core.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/function_filter.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_filter.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/function_flat_map.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_flat_map.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/function_limit.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_limit.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/function_map.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_map.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/function_passthrough.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_passthrough.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/function_peek.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_peek.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stream.go" beforeDir="false" afterPath="$PROJECT_DIR$/stream.go" afterDir="false" />
     </list>
@@ -37,7 +40,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="GOROOT" path="$USER_HOME$/apps/Go/go" />
+  <component name="GOROOT" path="C:\Go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -55,14 +58,15 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/functions" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/termination" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\yunnli\Desktop\WSL\wa\woohoo\termination" />
+      <recent name="C:\Users\yunnli\Desktop\WSL\wa\woohoo\functions" />
       <recent name="$PROJECT_DIR$/functions" />
       <recent name="$PROJECT_DIR$" />
       <recent name="C:\Users\yunnli\Desktop\WSL\woohoo\functions" />
-      <recent name="C:\Users\yunnli\Desktop\woohoo\functions" />
     </key>
   </component>
   <component name="RunManager" selected="Go Build.go build woohoo">
@@ -138,35 +142,39 @@
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state x="667" y="427" key="#GOROOT" timestamp="1608215576679">
-      <screen x="0" y="0" width="1920" height="1020" />
+    <state x="667" y="435" key="#GOROOT" timestamp="1608276223024">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="667" y="427" key="#GOROOT/0.0.1920.1020@0.0.1920.1020" timestamp="1608215576679" />
-    <state x="667" y="435" key="#GOROOT/0.0.1920.1040@0.0.1920.1040" timestamp="1608189310275" />
+    <state x="667" y="435" key="#GOROOT/0.0.1920.1040@0.0.1920.1040" timestamp="1608276223024" />
     <state x="715" y="224" key="#xdebugger.evaluate" timestamp="1608209761465">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="715" y="224" key="#xdebugger.evaluate/0.0.1920.1040@0.0.1920.1040" timestamp="1608209761465" />
-    <state width="1838" height="228" key="GridCell.Tab.0.bottom" timestamp="1608219455359">
-      <screen x="0" y="0" width="1920" height="1020" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1608276589403">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1608276589403" />
+    <state width="1877" height="259" key="GridCell.Tab.0.bottom" timestamp="1608281350398">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1838" height="228" key="GridCell.Tab.0.bottom/0.0.1920.1020@0.0.1920.1020" timestamp="1608219455359" />
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1608211580698" />
-    <state width="1838" height="228" key="GridCell.Tab.0.center" timestamp="1608219455357">
-      <screen x="0" y="0" width="1920" height="1020" />
+    <state width="1877" height="259" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1608281350398" />
+    <state width="1877" height="259" key="GridCell.Tab.0.center" timestamp="1608281350398">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1838" height="228" key="GridCell.Tab.0.center/0.0.1920.1020@0.0.1920.1020" timestamp="1608219455357" />
-    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1608211580697" />
-    <state width="1838" height="228" key="GridCell.Tab.0.left" timestamp="1608219455356">
-      <screen x="0" y="0" width="1920" height="1020" />
+    <state width="1877" height="259" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1608281350398" />
+    <state width="1877" height="259" key="GridCell.Tab.0.left" timestamp="1608281350398">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1838" height="228" key="GridCell.Tab.0.left/0.0.1920.1020@0.0.1920.1020" timestamp="1608219455356" />
-    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1608211580697" />
-    <state width="1838" height="228" key="GridCell.Tab.0.right" timestamp="1608219455358">
-      <screen x="0" y="0" width="1920" height="1020" />
+    <state width="1877" height="259" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1608281350398" />
+    <state width="1877" height="259" key="GridCell.Tab.0.right" timestamp="1608281350398">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1838" height="228" key="GridCell.Tab.0.right/0.0.1920.1020@0.0.1920.1020" timestamp="1608219455358" />
-    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1608211580698" />
+    <state width="1877" height="259" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1608281350398" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1608211581617">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -201,13 +209,8 @@
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/functions/function_filter.go</url>
-          <line>16</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/stream.go</url>
-          <line>91</line>
+          <line>90</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">

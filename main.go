@@ -33,14 +33,10 @@ func main() {
 	//}
 
 	start:= time.Now()
-	output := GetStream(arr).Peek(mappw).Filter(filterF).Execute()
+	GetStream(arr).Peek(mappw).Filter(filterF).ForEach(mappw)
 	end := time.Now()
 
 	fmt.Println("done!")
-	for _, o := range output {
-		it := o.(int)
-		fmt.Println(it)
-	}
 
 	fmt.Println(end.Sub(start).Seconds())
 

@@ -10,7 +10,7 @@ type ValveFlatMap struct{
 	FlatMapFunc FlatMapFunc
 }
 
-func (valve *ValveFlatMap) Fire(in interface{},output *chan interface{},wg *sync.WaitGroup){
+func (valve *ValveFlatMap) doFire(in interface{},output *chan interface{},wg *sync.WaitGroup){
 
 	arr := valve.FlatMapFunc(in)
 	if arr!=nil{
@@ -19,6 +19,13 @@ func (valve *ValveFlatMap) Fire(in interface{},output *chan interface{},wg *sync
 		}
 	}
 	wg.Done()
+
+}
+
+
+
+func (valve *ValveFlatMap) Fire(in interface{},output *chan interface{},wg *sync.WaitGroup){
+	go valve.doFire(in,output,wg)
 }
 
 func NewFlatMap(fmap FlatMapFunc) *ValveFlatMap{

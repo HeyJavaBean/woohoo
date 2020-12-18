@@ -76,7 +76,6 @@ func (stream *Stream) Peek(peekF functions.PeekFunc) *Stream {
 
 }
 
-
 //把所有内容执行启动并且输出到输出管道里
 func (stream *Stream) doFireUp() {
 	chain := stream.funcChain
@@ -106,4 +105,64 @@ func (stream *Stream) Execute() []interface{} {
 
 	return output
 
+}
+
+
+
+//一个自定义的比较简单的终端方法，把数据全部都输出到另外一个[]interface里去
+func (stream *Stream) ToArray() []interface{} {
+
+	stream.doFireUp()
+
+	output := []interface{}{}
+
+	out := stream.output
+
+	for {
+		if data, ok := <-*out; ok {
+			output = append(output, data)
+		} else {
+			break
+		}
+	}
+
+	return output
+
+}
+
+
+
+func (stream *Stream) ForEach(peekFunc functions.PeekFunc){
+
+	stream.doFireUp()
+
+	out := stream.output
+
+	for {
+		if data, ok := <-*out; ok {
+			peekFunc(data)
+		} else {
+			break
+		}
+	}
+}
+
+
+func (stream *Stream) Count() int{
+
+	stream.doFireUp()
+
+	out := stream.output
+
+	c:=0
+
+	for {
+		if _, ok := <-*out; ok {
+			c++
+		} else {
+			break
+		}
+	}
+
+	return c
 }

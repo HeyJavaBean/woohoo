@@ -7,20 +7,16 @@ type ValveLimit struct{
 	limitNum int
 }
 
-//思路：来了的放到channel里，channel出口是单线程搬运，就安全了
-func (valve *ValveLimit) pass(output *chan interface{}){
-
-}
 
 func (valve *ValveLimit) Fire(in interface{},output *chan interface{},wg *sync.WaitGroup){
 
-	//todo 这里看看怎么解决
-	//保证线程安全的同时进行计数
-	//out := valve.MapFunc(in)
-	//if out!=nil{
-	//	*output<-out
-	//}
-	//wg.Done()
+	if valve.limitNum>0{
+		*output<-in
+		valve.limitNum--
+	}
+
+	//一个不优雅的写法问题
+	wg.Done()
 
 }
 
