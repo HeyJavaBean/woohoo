@@ -83,6 +83,12 @@ func (stream *Stream) Filter(filterFunc functions.FilterFunc) *Stream {
 
 }
 
+func (stream *Stream) Limit(limitNum int) *Stream {
+
+	return stream.AddStage(functions.NewLimit(limitNum))
+
+}
+
 func (stream *Stream) Sort(comparator functions.Comparator) *Stream {
 
 	return stream.AddStatefulStage(functions.NewSort(comparator))
@@ -192,7 +198,19 @@ func (stream *Stream) Count() int{
 
 
 
-type ReduceFunc func(a,b interface{}) interface{}
+type ReduceFunc func(sum,next interface{}) interface{}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 func (stream *Stream) Reduce(reduceFunc ReduceFunc) interface{} {
@@ -203,6 +221,12 @@ func (stream *Stream) Reduce(reduceFunc ReduceFunc) interface{} {
 
 	var result interface{}
 
+	if data, ok := <-*out; ok {
+		result = data
+	} else {
+		return result
+	}
+
 	for {
 		if data, ok := <-*out; ok {
 			result = reduceFunc(result,data)
@@ -212,5 +236,58 @@ func (stream *Stream) Reduce(reduceFunc ReduceFunc) interface{} {
 	}
 
 	return result
+
+}
+
+
+type IdentifyFunc func(in interface{}) string
+
+
+func (stream *Stream) GroupBy(identifyFunc IdentifyFunc) map[string][]interface{} {
+
+	stream.doFireUp()
+
+	out := stream.output
+
+	res := map[string][]interface{}{}
+
+	for {
+		if data, ok := <-*out; ok {
+
+			k := identifyFunc(data)
+			res[k] = append(res[k], data)
+
+		} else {
+			break
+		}
+	}
+
+	return res
+
+}
+
+func (stream *Stream) GroupCount(identifyFunc IdentifyFunc) map[string]int {
+
+	stream.doFireUp()
+
+	out := stream.output
+
+	res := map[string]int{}
+	total := 0
+	for {
+		if data, ok := <-*out; ok {
+
+			k := identifyFunc(data)
+			res[k]++
+			total++
+		} else {
+			break
+		}
+	}
+
+	//额外增加一个总数
+	res["totalNum"] = total
+
+	return res
 
 }
