@@ -20,14 +20,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="505c62ef-dec9-4ffb-bd99-84b9f770ed8d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/stream/midiation.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stream/termination.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/termination/termination_core.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stream.go" beforeDir="false" afterPath="$PROJECT_DIR$/stream.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/function_core.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_core.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stream.go" beforeDir="false" afterPath="$PROJECT_DIR$/stream/stream.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
   </component>
   <component name="GOROOT" path="C:\Go" />
   <component name="Git.Settings">
@@ -42,14 +52,18 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/termination" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\yunnli\Desktop\WSL\wa\woohoo\stream" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\yunnli\Desktop\WSL\wa\woohoo\termination" />
       <recent name="C:\Users\yunnli\Desktop\WSL\wa\woohoo\functions" />
@@ -136,6 +150,10 @@
     </state>
     <state x="667" y="427" key="#GOROOT/0.0.1920.1020@0.0.1920.1020" timestamp="1608215576679" />
     <state x="667" y="435" key="#GOROOT/0.0.1920.1040@0.0.1920.1040" timestamp="1608276223024" />
+    <state x="703" y="320" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1608556640017">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="703" y="320" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1608556640017" />
     <state x="715" y="224" key="#xdebugger.evaluate" timestamp="1608209761465">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -198,8 +216,8 @@
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/stream.go</url>
-          <line>122</line>
+          <url>file://$PROJECT_DIR$/stream/stream.go</url>
+          <line>142</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>

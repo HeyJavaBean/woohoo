@@ -50,9 +50,6 @@ func (function *Function) FireValve() {
 					break
 				}
 			}
-
-
-
 		}
 
 
