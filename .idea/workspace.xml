@@ -20,14 +20,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="505c62ef-dec9-4ffb-bd99-84b9f770ed8d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/stream/function_api.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/function_core.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_core.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/function_api.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/function_core.go" beforeDir="false" afterPath="$PROJECT_DIR$/stage/stage_core.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/function_distinct.go" beforeDir="false" afterPath="$PROJECT_DIR$/stage/stage_distinct.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/function_filter.go" beforeDir="false" afterPath="$PROJECT_DIR$/stage/stage_filter.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/function_flat_map.go" beforeDir="false" afterPath="$PROJECT_DIR$/stage/stage_flat_map.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/function_limit.go" beforeDir="false" afterPath="$PROJECT_DIR$/stage/stage_limit.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/function_map.go" beforeDir="false" afterPath="$PROJECT_DIR$/stage/stage_map.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/function_passthrough.go" beforeDir="false" afterPath="$PROJECT_DIR$/stage/stage_passthrough.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/function_peek.go" beforeDir="false" afterPath="$PROJECT_DIR$/stage/stage_peek.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/function_safe_peek.go" beforeDir="false" afterPath="$PROJECT_DIR$/stage/stage_safe_peek.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/function_skip.go" beforeDir="false" afterPath="$PROJECT_DIR$/stage/stage_skip.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/function_sort.go" beforeDir="false" afterPath="$PROJECT_DIR$/stage/stage_sort.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stream/midiation.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_api.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stream/stream.go" beforeDir="false" afterPath="$PROJECT_DIR$/stream/stream.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stream/termination.go" beforeDir="false" afterPath="$PROJECT_DIR$/stream/termination.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/termination/termination_core.go" beforeDir="false" afterPath="$PROJECT_DIR$/termination/termination_core.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/termination/termination_core.go" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,9 +74,6 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/termination" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\yunnli\Desktop\WSL\wa\woohoo\stream" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\yunnli\Desktop\WSL\wa\woohoo\termination" />
       <recent name="C:\Users\yunnli\Desktop\WSL\wa\woohoo\functions" />
@@ -73,8 +81,13 @@
       <recent name="$PROJECT_DIR$" />
       <recent name="C:\Users\yunnli\Desktop\WSL\woohoo\functions" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/stream" />
+      <recent name="$PROJECT_DIR$/functions" />
+      <recent name="C:\Users\yunnli\Desktop\WSL\wa\woohoo\stream" />
+    </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build github.com/HeyJavaBean/woohoo (1)">
+  <component name="RunManager" selected="Go Build.go build woohoo">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="woohoo" />
       <working_directory value="$PROJECT_DIR$" />
@@ -98,6 +111,15 @@
       <module name="woohoo" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="DIRECTORY" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <package value="woohoo" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build woohoo" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="woohoo" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
       <filePath value="$PROJECT_DIR$/main.go" />
       <package value="woohoo" />
       <directory value="$PROJECT_DIR$" />
@@ -129,9 +151,11 @@
       <item itemvalue="Go Build.go build github.com/HeyJavaBean/woohoo" />
       <item itemvalue="Go Test.TestWg in woohoo" />
       <item itemvalue="Go Build.go build github.com/HeyJavaBean/woohoo (1)" />
+      <item itemvalue="Go Build.go build woohoo" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build woohoo" />
         <item itemvalue="Go Build.go build github.com/HeyJavaBean/woohoo (1)" />
         <item itemvalue="Go Build.go build github.com/HeyJavaBean/woohoo" />
         <item itemvalue="Go Test.TestWg in woohoo" />
@@ -179,45 +203,45 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1608276589403" />
-    <state width="1838" height="238" key="GridCell.Tab.0.bottom" timestamp="1608563438226">
+    <state width="1828" height="118" key="GridCell.Tab.0.bottom" timestamp="1608566777853">
       <screen x="0" y="0" width="1920" height="1020" />
     </state>
-    <state width="1838" height="238" key="GridCell.Tab.0.bottom/0.0.1920.1020@0.0.1920.1020" timestamp="1608563438226" />
+    <state width="1828" height="118" key="GridCell.Tab.0.bottom/0.0.1920.1020@0.0.1920.1020" timestamp="1608566777853" />
     <state width="1877" height="259" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1608551672840" />
-    <state width="1838" height="238" key="GridCell.Tab.0.center" timestamp="1608563438226">
+    <state width="1828" height="118" key="GridCell.Tab.0.center" timestamp="1608566777852">
       <screen x="0" y="0" width="1920" height="1020" />
     </state>
-    <state width="1838" height="238" key="GridCell.Tab.0.center/0.0.1920.1020@0.0.1920.1020" timestamp="1608563438226" />
+    <state width="1828" height="118" key="GridCell.Tab.0.center/0.0.1920.1020@0.0.1920.1020" timestamp="1608566777852" />
     <state width="1877" height="259" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1608551672840" />
-    <state width="1838" height="238" key="GridCell.Tab.0.left" timestamp="1608563438226">
+    <state width="1828" height="118" key="GridCell.Tab.0.left" timestamp="1608566777852">
       <screen x="0" y="0" width="1920" height="1020" />
     </state>
-    <state width="1838" height="238" key="GridCell.Tab.0.left/0.0.1920.1020@0.0.1920.1020" timestamp="1608563438226" />
+    <state width="1828" height="118" key="GridCell.Tab.0.left/0.0.1920.1020@0.0.1920.1020" timestamp="1608566777852" />
     <state width="1877" height="259" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1608551672840" />
-    <state width="1838" height="238" key="GridCell.Tab.0.right" timestamp="1608563438226">
+    <state width="1828" height="118" key="GridCell.Tab.0.right" timestamp="1608566777853">
       <screen x="0" y="0" width="1920" height="1020" />
     </state>
-    <state width="1838" height="238" key="GridCell.Tab.0.right/0.0.1920.1020@0.0.1920.1020" timestamp="1608563438226" />
+    <state width="1828" height="118" key="GridCell.Tab.0.right/0.0.1920.1020@0.0.1920.1020" timestamp="1608566777853" />
     <state width="1877" height="259" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1608551672840" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1608542858884">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1828" height="118" key="GridCell.Tab.1.bottom" timestamp="1608566778288">
+      <screen x="0" y="0" width="1920" height="1020" />
     </state>
-    <state width="1838" height="365" key="GridCell.Tab.1.bottom/0.0.1920.1020@0.0.1920.1020" timestamp="1608136206098" />
+    <state width="1828" height="118" key="GridCell.Tab.1.bottom/0.0.1920.1020@0.0.1920.1020" timestamp="1608566778288" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1608542858884" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1608542858884">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1828" height="118" key="GridCell.Tab.1.center" timestamp="1608566778287">
+      <screen x="0" y="0" width="1920" height="1020" />
     </state>
-    <state width="1838" height="365" key="GridCell.Tab.1.center/0.0.1920.1020@0.0.1920.1020" timestamp="1608136206096" />
+    <state width="1828" height="118" key="GridCell.Tab.1.center/0.0.1920.1020@0.0.1920.1020" timestamp="1608566778287" />
     <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1608542858884" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1608542858884">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1828" height="118" key="GridCell.Tab.1.left" timestamp="1608566778287">
+      <screen x="0" y="0" width="1920" height="1020" />
     </state>
-    <state width="1838" height="365" key="GridCell.Tab.1.left/0.0.1920.1020@0.0.1920.1020" timestamp="1608136206095" />
+    <state width="1828" height="118" key="GridCell.Tab.1.left/0.0.1920.1020@0.0.1920.1020" timestamp="1608566778287" />
     <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1608542858884" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1608542858884">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1828" height="118" key="GridCell.Tab.1.right" timestamp="1608566778288">
+      <screen x="0" y="0" width="1920" height="1020" />
     </state>
-    <state width="1838" height="365" key="GridCell.Tab.1.right/0.0.1920.1020@0.0.1920.1020" timestamp="1608136206097" />
+    <state width="1828" height="118" key="GridCell.Tab.1.right/0.0.1920.1020@0.0.1920.1020" timestamp="1608566778288" />
     <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1608542858884" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1608533158877">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -229,8 +253,13 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/functions/function_filter.go</url>
+          <url>file://$PROJECT_DIR$/stage/stage_filter.go</url>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/stream/termination.go</url>
+          <line>19</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

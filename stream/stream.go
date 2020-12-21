@@ -1,84 +1,59 @@
 package stream
 
 import (
-	"github.com/HeyJavaBean/woohoo/functions"
-	"github.com/HeyJavaBean/woohoo/termination"
+	"woohoo/stage"
 )
 
 type Stream struct {
-	//数据源，全部堆积在这里
+	//数据源
 	input *chan interface{}
-	//处理好了的数据都放到这里来
+	//处理好了的数据
 	Output *chan interface{}
-	//函数模型链
-	funcChain *functions.Function
+	//函数链头部
+	Head *stage.Stage
 	//函数链尾部
-	funcTail *functions.Function
-	//终端
-	termination termination.Termination
+	Tail *stage.Stage
 }
 
-//获取一个流，默认进行并发执行
+//获取一个流
 func GetStream(ar []interface{}) *Stream {
-
-	//把数据全放到一个channel里等待
-	input := make(chan interface{}, len(ar))
-	//这里整一个有长度的ar，其实也无所谓的
-	output := make(chan interface{}, len(ar))
-	//数据放入源内
+	in := make(chan interface{}, len(ar))
+	out := make(chan interface{}, len(ar))
 	for _, a := range ar {
-		input <- a
+		in <- a
 	}
-	//关闭
-	close(input)
-	//添加一个基础阀门
-	funcH := functions.AddStateless(&input, &output, functions.NewPassthrough())
-	funcT := funcH
-	stream := Stream{&input, &output, funcH, funcT,nil}
-
-	return &stream
+	close(in)
+	s := &Stream{&in, &out, nil, nil}
+	return s.AddStage(false, stage.NewPassthrough())
 }
 
 
-func (stream *Stream) AddStatefulStage(fun functions.ValveFunc) *Stream {
-	//上一节的输出作为本节的输入
-	input := stream.Output
-	//准备一个输出管道
+
+func (s *Stream) AddStage(stateless bool, fun stage.StageFunc) *Stream{
+	input := s.Output
 	c := make(chan interface{})
-	stream.Output = &c
-	//把上一节的输出作为下一节的输入
-	f := functions.AddStatefulValve(input, stream.Output, fun)
-	//这节函数加到尾巴上
-	stream.funcTail.NextFunc = f
-	//更新尾部节点
-	stream.funcTail = f
-
-	return stream
+	s.Output = &c
+	st := &stage.Stage{input,&c,fun,nil,stateless}
+	if s.Head==nil{
+		st.Input = s.input
+		//st.Output = s.Output
+		s.Tail= st
+		s.Head= st
+	}else{
+		s.Tail.Next = st
+		s.Tail = st
+	}
+	return s
 }
 
-func (stream *Stream) AddStage(fun functions.ValveFunc) *Stream {
-	//上一节的输出作为本节的输入
-	input := stream.Output
-	//准备一个输出管道
-	c := make(chan interface{})
-	stream.Output = &c
-	//把上一节的输出作为下一节的输入
-	f := functions.AddStateless(input, stream.Output, fun)
-	//这节函数加到尾巴上
-	stream.funcTail.NextFunc = f
-	//更新尾部节点
-	stream.funcTail = f
-
-	return stream
-}
 
 //把所有内容执行启动并且输出到输出管道里
-func (stream *Stream) DoFireUp() {
-	chain := stream.funcChain
-	for chain != nil {
+func (s *Stream) DoFireUp() {
+	stage := s.Head
+	for stage != nil {
 		//挨个激活
-		chain.FireValve()
-		chain = chain.NextFunc
+		stage.FireValve()
+		stage = stage.Next
 	}
 }
 

@@ -1,3 +1,3 @@
-module github.com/HeyJavaBean/woohoo
+module woohoo
 
 go 1.15

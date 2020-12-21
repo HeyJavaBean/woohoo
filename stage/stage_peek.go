@@ -1,12 +1,15 @@
-package functions
+package stage
 
-import "sync"
+import (
+	"sync"
+)
 
 type PeekFunc func(interface{})
 
 type ValvePeek struct{
 	PeekFunc PeekFunc
 }
+
 
 
 func (valve *ValvePeek) doFire(in interface{},output *chan interface{},wg *sync.WaitGroup){

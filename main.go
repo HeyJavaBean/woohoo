@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/HeyJavaBean/woohoo/stream"
+	"woohoo/stream"
 	"math/rand"
 )
 
