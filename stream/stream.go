@@ -1,15 +1,15 @@
 package stream
 
 import (
-	"woohoo/functions"
-	"woohoo/termination"
+	"github.com/HeyJavaBean/woohoo/functions"
+	"github.com/HeyJavaBean/woohoo/termination"
 )
 
 type Stream struct {
 	//数据源，全部堆积在这里
 	input *chan interface{}
 	//处理好了的数据都放到这里来
-	output *chan interface{}
+	Output *chan interface{}
 	//函数模型链
 	funcChain *functions.Function
 	//函数链尾部
@@ -42,12 +42,12 @@ func GetStream(ar []interface{}) *Stream {
 
 func (stream *Stream) AddStatefulStage(fun functions.ValveFunc) *Stream {
 	//上一节的输出作为本节的输入
-	input := stream.output
+	input := stream.Output
 	//准备一个输出管道
 	c := make(chan interface{})
-	stream.output = &c
+	stream.Output = &c
 	//把上一节的输出作为下一节的输入
-	f := functions.AddStatefulValve(input, stream.output, fun)
+	f := functions.AddStatefulValve(input, stream.Output, fun)
 	//这节函数加到尾巴上
 	stream.funcTail.NextFunc = f
 	//更新尾部节点
@@ -58,12 +58,12 @@ func (stream *Stream) AddStatefulStage(fun functions.ValveFunc) *Stream {
 
 func (stream *Stream) AddStage(fun functions.ValveFunc) *Stream {
 	//上一节的输出作为本节的输入
-	input := stream.output
+	input := stream.Output
 	//准备一个输出管道
 	c := make(chan interface{})
-	stream.output = &c
+	stream.Output = &c
 	//把上一节的输出作为下一节的输入
-	f := functions.AddStateless(input, stream.output, fun)
+	f := functions.AddStateless(input, stream.Output, fun)
 	//这节函数加到尾巴上
 	stream.funcTail.NextFunc = f
 	//更新尾部节点

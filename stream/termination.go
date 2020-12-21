@@ -1,6 +1,6 @@
 package stream
 
-import "woohoo/functions"
+import "github.com/HeyJavaBean/woohoo/functions"
 
 
 
@@ -26,7 +26,7 @@ func (stream *Stream) Reduce(reduceFunc ReduceFunc) interface{} {
 
 	stream.DoFireUp()
 
-	out := stream.output
+	out := stream.Output
 
 	var result interface{}
 
@@ -56,7 +56,7 @@ func (stream *Stream) GroupBy(identifyFunc IdentifyFunc) map[string][]interface{
 
 	stream.DoFireUp()
 
-	out := stream.output
+	out := stream.Output
 
 	res := map[string][]interface{}{}
 
@@ -79,7 +79,7 @@ func (stream *Stream) GroupCount(identifyFunc IdentifyFunc) map[string]int {
 
 	stream.DoFireUp()
 
-	out := stream.output
+	out := stream.Output
 
 	res := map[string]int{}
 	total := 0
@@ -115,7 +115,7 @@ func (stream *Stream) Execute() []interface{} {
 
 	output := []interface{}{}
 
-	out := stream.output
+	out := stream.Output
 
 	for {
 		if data, ok := <-*out; ok {
@@ -138,7 +138,7 @@ func (stream *Stream) ToArray() []interface{} {
 
 	output := []interface{}{}
 
-	out := stream.output
+	out := stream.Output
 
 	for {
 		if data, ok := <-*out; ok {
@@ -156,7 +156,7 @@ func (stream *Stream) ForEach(peekFunc functions.PeekFunc){
 
 	stream.DoFireUp()
 
-	out := stream.output
+	out := stream.Output
 
 	for {
 		if data, ok := <-*out; ok {
@@ -171,7 +171,7 @@ func (stream *Stream) Count() int{
 
 	stream.DoFireUp()
 
-	out := stream.output
+	out := stream.Output
 
 	c:=0
 

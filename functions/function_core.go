@@ -74,3 +74,6 @@ func AddStatefulValve(input, output *chan interface{}, fun ValveFunc) *Function 
 	function.Output = output
 	return function
 }
+
+
+
