@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"time"
+	"math/rand"
 )
 
 
@@ -11,7 +11,7 @@ func main() {
 
 	arr := []interface{}{}
 
-	for i:=0;i<653;i++{
+	for i:=0;i<25;i++{
 		arr = append(arr, i)
 	}
 
@@ -20,11 +20,18 @@ func main() {
 		fmt.Println(intt,":peek")
 	}
 
-	var filterF = func(in interface{}) bool{
+
+	var mappf = func(in interface{}) interface{}{
 		intt := in.(int)
-		fmt.Println(intt,":filter")
-		return intt%2==0
+		return intt+rand.Intn(10)
 	}
+
+	//
+	//var filterF = func(in interface{}) bool{
+	//	intt := in.(int)
+	//	fmt.Println(intt,":filter")
+	//	return intt%2==0
+	//}
 
 	//var flatF = func(in interface{}) []interface{}{
 	//	intt := in.(int)
@@ -32,12 +39,13 @@ func main() {
 	//	return []interface{}{intt+2,intt-3}
 	//}
 
-	start:= time.Now()
-	GetStream(arr).Peek(mappw).Filter(filterF).ForEach(mappw)
-	end := time.Now()
+	var comp =  func(a interface{}, b interface{}) bool{
+		ai :=a.(int)
+		bi :=b.(int)
+		return ai<bi
+	}
 
-	fmt.Println("done!")
 
-	fmt.Println(end.Sub(start).Seconds())
+	GetStream(arr).Map(mappf).Sort(comp).ForEach(mappw)
 
 }

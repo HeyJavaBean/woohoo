@@ -29,12 +29,31 @@ func GetStream(ar []interface{}) *Stream {
 	//关闭
 	close(input)
 	//添加一个基础阀门
-	funcH := functions.AddValve(&input, &output, functions.NewPassthrough())
+	funcH := functions.AddStateless(&input, &output, functions.NewPassthrough())
 	funcT := funcH
 	stream := Stream{&input, &output, funcH, funcT}
 
 	return &stream
 }
+
+
+func (stream *Stream) AddStatefulStage(fun functions.ValveFunc) *Stream{
+	//上一节的输出作为本节的输入
+	input := stream.output
+	//准备一个输出管道
+	c := make(chan interface{})
+	stream.output = &c
+	//把上一节的输出作为下一节的输入
+	f := functions.AddStatefulValve(input, stream.output, fun)
+	//这节函数加到尾巴上
+	stream.funcTail.NextFunc = f
+	//更新尾部节点
+	stream.funcTail = f
+
+	return stream
+}
+
+
 
 func (stream *Stream) AddStage(fun functions.ValveFunc) *Stream{
 	//上一节的输出作为本节的输入
@@ -43,7 +62,7 @@ func (stream *Stream) AddStage(fun functions.ValveFunc) *Stream{
 	c := make(chan interface{})
 	stream.output = &c
 	//把上一节的输出作为下一节的输入
-	f := functions.AddValve(input, stream.output, fun)
+	f := functions.AddStateless(input, stream.output, fun)
 	//这节函数加到尾巴上
 	stream.funcTail.NextFunc = f
 	//更新尾部节点
@@ -63,6 +82,13 @@ func (stream *Stream) Filter(filterFunc functions.FilterFunc) *Stream {
 	return stream.AddStage(functions.NewFilter(filterFunc))
 
 }
+
+func (stream *Stream) Sort(comparator functions.Comparator) *Stream {
+
+	return stream.AddStatefulStage(functions.NewSort(comparator))
+
+}
+
 
 func (stream *Stream) FlatMap(fmF functions.FlatMapFunc) *Stream {
 
@@ -130,8 +156,6 @@ func (stream *Stream) ToArray() []interface{} {
 
 }
 
-
-
 func (stream *Stream) ForEach(peekFunc functions.PeekFunc){
 
 	stream.doFireUp()
@@ -146,7 +170,6 @@ func (stream *Stream) ForEach(peekFunc functions.PeekFunc){
 		}
 	}
 }
-
 
 func (stream *Stream) Count() int{
 
@@ -164,4 +187,30 @@ func (stream *Stream) Count() int{
 		}
 	}
 	return c
+}
+
+
+
+
+type ReduceFunc func(a,b interface{}) interface{}
+
+
+func (stream *Stream) Reduce(reduceFunc ReduceFunc) interface{} {
+
+	stream.doFireUp()
+
+	out := stream.output
+
+	var result interface{}
+
+	for {
+		if data, ok := <-*out; ok {
+			result = reduceFunc(result,data)
+		} else {
+			break
+		}
+	}
+
+	return result
+
 }

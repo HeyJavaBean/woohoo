@@ -10,21 +10,33 @@ type Comparator func(a,b interface{}) bool
 
 type ValveSort struct{
 	comparator Comparator
-	sortList []interface{}
 }
 
 
 func (valve *ValveSort) Fire(in interface{},output *chan interface{},wg *sync.WaitGroup){
 
 	//挨个排序，直到完成了才放行
+	ins := in.([]interface{})
 
-	if !valve.mapper[in]{
-		valve.mapper[in]=true
-		*output<-in
+	//利用函数进行排序,经典泡泡排序
+	for i:=0;i<len(ins)-1;i++{
+
+		for j:=i+1;j<len(ins);j++{
+
+			if valve.comparator(ins[i],ins[j]){
+				temp := ins[i]
+				ins[i] = ins[j]
+				ins[j] = temp
+			}
+		}
+
 	}
 
-	//一个不优雅的写法问题
-	wg.Done()
+	//按照顺序输出
+	for _, i := range ins {
+		*output<-i
+	}
+
 
 }
 
