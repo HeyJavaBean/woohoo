@@ -1,11 +1,6 @@
 package stream
 
-import "woohoo/functions"
-
-
-
-
-
+import "woohoo/stage"
 
 type ReduceFunc func(sum,next interface{}) interface{}
 
@@ -20,13 +15,11 @@ type ReduceFunc func(sum,next interface{}) interface{}
 
 
 
+func (s *Stream) Reduce(reduceFunc ReduceFunc) interface{} {
 
+	s.DoFireUp()
 
-func (stream *Stream) Reduce(reduceFunc ReduceFunc) interface{} {
-
-	stream.DoFireUp()
-
-	out := stream.output
+	out := s.Output
 
 	var result interface{}
 
@@ -52,11 +45,11 @@ func (stream *Stream) Reduce(reduceFunc ReduceFunc) interface{} {
 type IdentifyFunc func(in interface{}) string
 
 
-func (stream *Stream) GroupBy(identifyFunc IdentifyFunc) map[string][]interface{} {
+func (s *Stream) GroupBy(identifyFunc IdentifyFunc) map[string][]interface{} {
 
-	stream.DoFireUp()
+	s.DoFireUp()
 
-	out := stream.output
+	out := s.Output
 
 	res := map[string][]interface{}{}
 
@@ -75,11 +68,11 @@ func (stream *Stream) GroupBy(identifyFunc IdentifyFunc) map[string][]interface{
 
 }
 
-func (stream *Stream) GroupCount(identifyFunc IdentifyFunc) map[string]int {
+func (s *Stream) GroupCount(identifyFunc IdentifyFunc) map[string]int {
 
-	stream.DoFireUp()
+	s.DoFireUp()
 
-	out := stream.output
+	out := s.Output
 
 	res := map[string]int{}
 	total := 0
@@ -109,13 +102,13 @@ func (stream *Stream) GroupCount(identifyFunc IdentifyFunc) map[string]int {
 
 
 //一个自定义的比较简单的终端方法，把数据全部都输出到另外一个[]interface里去
-func (stream *Stream) Execute() []interface{} {
+func (s *Stream) Execute() []interface{} {
 
-	stream.DoFireUp()
+	s.DoFireUp()
 
 	output := []interface{}{}
 
-	out := stream.output
+	out := s.Output
 
 	for {
 		if data, ok := <-*out; ok {
@@ -132,13 +125,13 @@ func (stream *Stream) Execute() []interface{} {
 
 
 //一个自定义的比较简单的终端方法，把数据全部都输出到另外一个[]interface里去
-func (stream *Stream) ToArray() []interface{} {
+func (s *Stream) ToArray() []interface{} {
 
-	stream.DoFireUp()
+	s.DoFireUp()
 
 	output := []interface{}{}
 
-	out := stream.output
+	out := s.Output
 
 	for {
 		if data, ok := <-*out; ok {
@@ -152,11 +145,11 @@ func (stream *Stream) ToArray() []interface{} {
 
 }
 
-func (stream *Stream) ForEach(peekFunc functions.PeekFunc){
+func (s *Stream) ForEach(peekFunc stage.PeekFunc){
 
-	stream.DoFireUp()
+	s.DoFireUp()
 
-	out := stream.output
+	out := s.Output
 
 	for {
 		if data, ok := <-*out; ok {
@@ -167,11 +160,11 @@ func (stream *Stream) ForEach(peekFunc functions.PeekFunc){
 	}
 }
 
-func (stream *Stream) Count() int{
+func (s *Stream) Count() int{
 
-	stream.DoFireUp()
+	s.DoFireUp()
 
-	out := stream.output
+	out := s.Output
 
 	c:=0
 

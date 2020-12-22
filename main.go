@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"woohoo/stream"
 	"math/rand"
 )
 
@@ -60,7 +61,7 @@ func main() {
 		arr = append(arr, i)
 	}
 
-	by := GetStream(arr).Map(mappf).Sort(comp).Limit(3).Reduce(rd)
+	by := stream.GetStream(arr).Map(mappf).Sort(comp).Limit(3).Reduce(rd)
 
 	fmt.Println(by)
 
