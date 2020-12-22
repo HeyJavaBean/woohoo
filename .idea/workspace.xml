@@ -20,12 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="505c62ef-dec9-4ffb-bd99-84b9f770ed8d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/stream/midiation.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stream/termination.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/termination/termination_core.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/function_core.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/function_core.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stream.go" beforeDir="false" afterPath="$PROJECT_DIR$/stream/stream.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
