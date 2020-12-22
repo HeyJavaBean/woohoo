@@ -18,7 +18,7 @@ func (s *Stream) Reduce(reduceFunc stage.ReduceFunc) interface{} {
 
 	for {
 		if data, ok := <-*out; ok {
-			result = reduceFunc(result,data)
+			result = reduceFunc(result, data)
 		} else {
 			break
 		}
@@ -28,11 +28,7 @@ func (s *Stream) Reduce(reduceFunc stage.ReduceFunc) interface{} {
 
 }
 
-
-type IdentifyFunc func(in interface{}) string
-
-
-func (s *Stream) GroupBy(identifyFunc IdentifyFunc) map[string][]interface{} {
+func (s *Stream) GroupBy(identifyFunc stage.IdentifyFunc) map[string][]interface{} {
 
 	s.DoFireUp()
 
@@ -55,7 +51,8 @@ func (s *Stream) GroupBy(identifyFunc IdentifyFunc) map[string][]interface{} {
 
 }
 
-func (s *Stream) GroupCount(identifyFunc IdentifyFunc) map[string]int {
+//第一个值是map，第二个是总共的个数
+func (s *Stream) GroupCount(identifyFunc stage.IdentifyFunc) (map[string]int, int) {
 
 	s.DoFireUp()
 
@@ -74,42 +71,42 @@ func (s *Stream) GroupCount(identifyFunc IdentifyFunc) map[string]int {
 		}
 	}
 
-	//额外增加一个总数
-	res["totalNum"] = total
-
-	return res
+	return res, total
 
 }
 
+//实现的不太好，是反向包装了一个新的comparator
+func (s *Stream) Min(comparator stage.Comparator) interface{} {
 
-
-
-
-
-
-
-//一个自定义的比较简单的终端方法，把数据全部都输出到另外一个[]interface里去
-func (s *Stream) Execute() []interface{} {
-
-	s.DoFireUp()
-
-	output := []interface{}{}
+	s.Sort(comparator).Limit(1).DoFireUp()
 
 	out := s.Output
 
-	for {
-		if data, ok := <-*out; ok {
-			output = append(output, data)
-		} else {
-			break
-		}
+	if data, ok := <-*out; ok {
+		return data
+	} else {
+		return nil
 	}
-
-	return output
 
 }
 
+func (s *Stream) Max(comparator stage.Comparator) interface{} {
 
+	minComp := func(a,b interface{}) bool{
+		return !comparator(a,b)
+	}
+
+	s.Sort(minComp).Limit(1).DoFireUp()
+
+	out := s.Output
+
+	if data, ok := <-*out; ok {
+		return data
+	} else {
+		return nil
+	}
+
+}
 
 //一个自定义的比较简单的终端方法，把数据全部都输出到另外一个[]interface里去
 func (s *Stream) ToArray() []interface{} {
@@ -132,7 +129,7 @@ func (s *Stream) ToArray() []interface{} {
 
 }
 
-func (s *Stream) ForEach(peekFunc stage.PeekFunc){
+func (s *Stream) ForEach(peekFunc stage.PeekFunc) {
 
 	s.DoFireUp()
 
@@ -147,13 +144,13 @@ func (s *Stream) ForEach(peekFunc stage.PeekFunc){
 	}
 }
 
-func (s *Stream) Count() int{
+func (s *Stream) Count() int {
 
 	s.DoFireUp()
 
 	out := s.Output
 
-	c:=0
+	c := 0
 
 	for {
 		if _, ok := <-*out; ok {
@@ -164,5 +161,3 @@ func (s *Stream) Count() int{
 	}
 	return c
 }
-
-

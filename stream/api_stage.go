@@ -26,6 +26,12 @@ func (s *Stream) Skip(skipNum int)  *Stream {
 
 }
 
+func (s *Stream) Meter(count stage.MeterCounter)  *Stream {
+
+	return s.AddStage( true,stage.NewMeter(count))
+
+}
+
 func (s *Stream) Distinct()  *Stream {
 
 	return s.AddStage(true,stage.NewDistinct())
@@ -43,6 +49,22 @@ func (s *Stream) Sort(comparator stage.Comparator)  *Stream {
 	return s.AddStage(false,stage.NewSort(comparator))
 
 }
+
+//输出后的内容变成了Entry类型
+func (s *Stream) ThenGroup(identifyFunc stage.IdentifyFunc)  *Stream {
+
+	return s.AddStage(false,stage.NewThenGroup(identifyFunc))
+
+}
+
+//输出后的内容变成了EntryCount
+func (s *Stream) ThenGroupCount(identifyFunc stage.IdentifyFunc)  *Stream {
+
+	return s.AddStage(false,stage.NewThenGroupCount(identifyFunc))
+
+}
+
+
 
 func (s *Stream) FlatMap(fmF stage.FlatMapFunc)  *Stream {
 
