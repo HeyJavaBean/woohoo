@@ -1,6 +1,6 @@
 package stream
 
-import "woohoo/stage"
+import "github.com/HeyJavaBean/woohoo/stage"
 
 func (s *Stream) Map(mapFunc stage.MapFunc)  *Stream {
 

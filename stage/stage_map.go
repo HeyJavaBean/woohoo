@@ -2,7 +2,7 @@ package stage
 
 import "sync"
 
-type MapFunc func(interface{}) interface{}
+
 
 type ValveMap struct{
 	MapFunc MapFunc

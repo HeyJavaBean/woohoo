@@ -4,9 +4,6 @@ import "sync"
 
 //todo 想用布隆过滤器来做
 
-//感觉这个有点问题
-type Comparator func(a,b interface{}) bool
-
 
 type ValveSort struct{
 	comparator Comparator

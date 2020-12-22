@@ -2,7 +2,8 @@ package stage
 
 import "sync"
 
-type FilterFunc func(interface{}) bool
+
+
 
 
 

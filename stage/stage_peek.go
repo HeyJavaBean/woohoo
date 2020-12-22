@@ -4,7 +4,6 @@ import (
 	"sync"
 )
 
-type PeekFunc func(interface{})
 
 type ValvePeek struct{
 	PeekFunc PeekFunc

@@ -1,8 +1,6 @@
 package stream
 
-import (
-	"woohoo/stage"
-)
+import "github.com/HeyJavaBean/woohoo/stage"
 
 type Stream struct {
 	//数据源
@@ -24,7 +22,7 @@ func GetStream(ar []interface{}) *Stream {
 	}
 	close(in)
 	s := &Stream{&in, &out, nil, nil}
-	return s.AddStage(false, stage.NewPassthrough())
+	return s.AddStage(true, stage.NewPassthrough())
 }
 
 

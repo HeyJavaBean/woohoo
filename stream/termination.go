@@ -1,21 +1,8 @@
 package stream
 
-import "woohoo/stage"
+import "github.com/HeyJavaBean/woohoo/stage"
 
-type ReduceFunc func(sum,next interface{}) interface{}
-
-
-
-
-
-
-
-
-
-
-
-
-func (s *Stream) Reduce(reduceFunc ReduceFunc) interface{} {
+func (s *Stream) Reduce(reduceFunc stage.ReduceFunc) interface{} {
 
 	s.DoFireUp()
 

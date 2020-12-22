@@ -2,9 +2,6 @@ package stage
 
 import "sync"
 
-type FlatMapFunc func(interface{}) []interface{}
-
-
 
 type ValveFlatMap struct{
 	FlatMapFunc FlatMapFunc
