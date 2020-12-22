@@ -7,6 +7,7 @@ import "sync"
 
 type ValveSort struct{
 	comparator Comparator
+	desc bool
 }
 
 
@@ -20,7 +21,13 @@ func (valve *ValveSort) Fire(in interface{},output *chan interface{},wg *sync.Wa
 
 		for j:=i+1;j<len(ins);j++{
 
-			if valve.comparator(ins[i],ins[j]){
+			flag := valve.comparator(ins[i], ins[j])
+
+			if valve.desc{
+				flag = !flag
+			}
+
+			if flag {
 				temp := ins[i]
 				ins[i] = ins[j]
 				ins[j] = temp
@@ -37,7 +44,7 @@ func (valve *ValveSort) Fire(in interface{},output *chan interface{},wg *sync.Wa
 
 }
 
-func NewSort(comparator Comparator) *ValveSort {
+func NewSort(comparator Comparator, desc bool) *ValveSort {
 		f:= new(ValveSort)
 		f.comparator = comparator
 		return f

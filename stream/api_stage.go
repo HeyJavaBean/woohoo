@@ -46,7 +46,13 @@ func (s *Stream) SafePeek(peekF stage.PeekFunc)  *Stream {
 
 func (s *Stream) Sort(comparator stage.Comparator)  *Stream {
 
-	return s.AddStage(false,stage.NewSort(comparator))
+	return s.AddStage(false,stage.NewSort(comparator,false))
+
+}
+
+func (s *Stream) SortDesc(comparator stage.Comparator)  *Stream {
+
+	return s.AddStage(false,stage.NewSort(comparator,true))
 
 }
 
