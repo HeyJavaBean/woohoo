@@ -46,15 +46,10 @@ func (s *Stream) SafePeek(peekF stage.PeekFunc)  *Stream {
 
 func (s *Stream) Sort(comparator stage.Comparator)  *Stream {
 
-	return s.AddStage(false,stage.NewSort(comparator,false))
+	return s.AddStage(false,stage.NewSort(comparator))
 
 }
 
-func (s *Stream) SortDesc(comparator stage.Comparator)  *Stream {
-
-	return s.AddStage(false,stage.NewSort(comparator,true))
-
-}
 
 //输出后的内容变成了Entry类型
 func (s *Stream) ThenGroup(identifyFunc stage.IdentifyFunc)  *Stream {
