@@ -50,6 +50,7 @@ func (s *Stream) Sort(comparator stage.Comparator)  *Stream {
 
 }
 
+
 //输出后的内容变成了Entry类型
 func (s *Stream) ThenGroup(identifyFunc stage.IdentifyFunc)  *Stream {
 

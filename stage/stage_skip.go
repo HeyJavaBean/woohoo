@@ -1,6 +1,8 @@
 package stage
 
-import "sync"
+import (
+	"sync"
+)
 
 
 type ValveSkip struct{
@@ -21,8 +23,8 @@ func (valve *ValveSkip) Fire(in interface{},output *chan interface{},wg *sync.Wa
 
 }
 
-func NewSkip(skipNum int) *ValveLimit {
-		f:= new(ValveLimit)
-		f.limitNum = skipNum
+func NewSkip(skipNum int) *ValveSkip {
+		f:= new(ValveSkip)
+		f.skipNum = skipNum
 		return f
 }

@@ -20,7 +20,9 @@ func (valve *ValveSort) Fire(in interface{},output *chan interface{},wg *sync.Wa
 
 		for j:=i+1;j<len(ins);j++{
 
-			if valve.comparator(ins[i],ins[j]){
+			flag := valve.comparator(ins[i], ins[j])
+
+			if flag {
 				temp := ins[i]
 				ins[i] = ins[j]
 				ins[j] = temp

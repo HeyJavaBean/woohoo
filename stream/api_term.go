@@ -144,20 +144,71 @@ func (s *Stream) ForEach(peekFunc stage.PeekFunc) {
 	}
 }
 
-func (s *Stream) Count() int {
+//可以后期改成想办法做成并发的
+func (s *Stream) AllMatch(filterFunc stage.FilterFunc) bool {
 
 	s.DoFireUp()
 
 	out := s.Output
 
-	c := 0
-
 	for {
-		if _, ok := <-*out; ok {
-			c++
+		if data, ok := <-*out; ok {
+
+			flag := filterFunc(data)
+			//我不知道不关闭channel会不会引起内存泄漏gc不去回收的情况
+			if !flag{
+				return false
+			}
+
 		} else {
 			break
 		}
 	}
-	return c
+	return true
 }
+
+func (s *Stream) AnyMatch(filterFunc stage.FilterFunc) bool {
+
+	s.DoFireUp()
+
+	out := s.Output
+
+	for {
+		if data, ok := <-*out; ok {
+
+			flag := filterFunc(data)
+			//我不知道不关闭channel会不会引起内存泄漏gc不去回收的情况
+			if flag{
+				return true
+			}
+
+		} else {
+			break
+		}
+	}
+	return false
+}
+
+func (s *Stream) NoneMatch(filterFunc stage.FilterFunc) bool {
+
+	s.DoFireUp()
+
+	out := s.Output
+
+	for {
+		if data, ok := <-*out; ok {
+
+			flag := filterFunc(data)
+			//我不知道不关闭channel会不会引起内存泄漏gc不去回收的情况
+			if flag{
+				return false
+			}
+
+		} else {
+			break
+		}
+	}
+	return true
+}
+
+

@@ -6,17 +6,14 @@ type ValvePassthrough struct{
 
 }
 
-func (valve *ValvePassthrough) doFire(in interface{},output *chan interface{},wg *sync.WaitGroup){
+
+
+
+
+//保证直接输出的熟悉，不能并发
+func (valve *ValvePassthrough) Fire(in interface{},output *chan interface{},wg *sync.WaitGroup){
 	*output<-in
 	wg.Done()
-}
-
-
-
-
-
-func (valve *ValvePassthrough) Fire(in interface{},output *chan interface{},wg *sync.WaitGroup){
-	go valve.doFire(in,output,wg)
 }
 
 func NewPassthrough() *ValvePassthrough{
