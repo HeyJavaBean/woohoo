@@ -1,8 +1,8 @@
 package example
 
 import (
-	"fmt"
 	"github.com/HeyJavaBean/woohoo/stream"
+	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
@@ -42,20 +42,28 @@ func getSong2lyric() []interface{}{
 }
 
 
-func assertEqual(t *testing.T, a, b interface{}) {
-	if a != b {
-		t.Errorf("Not Equal. %d %d", a, b)
-	}
+
+var lenUnder5 = func(in interface{}) bool{
+	str := in.(string)
+	return len(str)<5
 }
+
+var mapToLen = func(in interface{}) interface{}{
+	str := in.(string)
+	return len(str)
+}
+
 
 func TestFilter(t *testing.T) {
 
-	lenUnder5 := func(in interface{}) bool{
-		str := in.(string)
-		return len(str)<5
-	}
-
 	res := stream.GetStream(getSong2lyric()).Filter(lenUnder5).ToArray()
 
-	fmt.Println(res)
+	assert.Equal(t,[]interface{}{"No"},res)
+}
+
+func TestMap(t *testing.T) {
+
+	res := stream.GetStream(getSong2lyric()).Filter(lenUnder5).Map(mapToLen).ToArray()
+
+	assert.Equal(t,[]interface{}{2},res)
 }
